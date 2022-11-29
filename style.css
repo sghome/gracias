@@ -1,0 +1,213 @@
+:root {
+  --cedar: #7b5d5d;
+  --coral: rgb(230, 146, 146);
+  --fadedcoral: #e69292;
+  --neoncoral: #ff7979;
+  --lightgrey: #ecdfdf;
+  --dolphin: rgb(184, 189, 189);
+  --lavender: rgb(191, 171, 210);
+  --teal: rgb(61, 88, 92);
+}
+
+@font-face {
+  font-family: 'DS-Digital';
+  src: url('https://assets.codepen.io/911157/subset-DS-Digital-Italic.woff') format("woff");
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: clamp(100%, 1rem + 2vw, 20px);
+  font-family: Arial;
+  color: var(--cedar);
+  background: radial-gradient(circle, var(--coral) 0%, var(--dolphin) 100%);
+  transition: 0.25s;
+  touch-action: pan-x;
+}
+
+#scene-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  opacity: 1.0;
+  background: radial-gradient(circle, var(--coral) 0%, rgb(--dolphin) 100%);
+}
+
+#scene-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.2;
+}
+
+#thankyou {
+  position: absolute;
+  bottom: 0;
+  padding: 0;
+  margin: 1em 2em;
+  font-family: 'DS-Digital';
+  display: block;
+}
+
+#thankyou > p {
+  margin: 0;
+  padding: 0;
+  word-spacing: 0.5em;
+  color: var(--fadedcoral);
+  text-shadow: 0 0 5px var(--neoncoral), 0 0 10px white, 0 0 15px var(--neoncoral), 0 0 20px var(--neoncoral), 0 0 25px var(--neoncoral), 0 0 30px var(--neoncoral), 0 0 45px var(--neoncoral);
+  font-size: 1.25em;
+}
+
+button {
+  padding: 1em 1.25em;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  transition: 0.5s;
+  color: var(--cedar);
+  font-size: 1em;
+}
+
+button:focus {
+  outline: none;
+}
+
+a.fullscreen {
+  position: absolute;
+  text-shadow: 0 0 5px var(--neoncoral), 0 0 10px white, 0 0 15px var(--neoncoral), 0 0 20px var(--neoncoral), 0 0 25px var(--neoncoral), 0 0 30px var(--neoncoral), 0 0 45px var(--neoncoral);
+  color: #edc7c7;
+  font-size: 0.9em;
+  margin: 1.5em 3em 1.5em 15em;
+  padding: 0;
+  border-radius: 50%;
+  text-decoration: none;
+  transform: rotateZ(-30deg);
+  text-align: center;
+  transition: 0.25s ease-in;
+}
+
+a.fullscreen:hover {
+  color: #f7e1e1;
+}
+
+#btn-celebrate:before { 
+  height: 0%;
+  width: 2px;
+}
+
+.btn {
+  position: absolute;
+  border-radius: 50%;
+  text-shadow: 0 0 5px var(--neoncoral), 0 0 10px white, 0 0 15px var(--neoncoral), 0 0 20px var(--neoncoral), 0 0 25px var(--neoncoral), 0 0 30px var(--neoncoral), 0 0 45px var(--neoncoral);
+}
+
+#btn-celebrate {
+  bottom: 1.5em;
+  right: 1.5em;
+  transform: rotateZ(-20deg);
+  opacity: 0;
+}
+
+#btn-celebrate:hover {
+  color: var(--lightgrey);
+  box-shadow:  
+  4px 4px 6px 0 rgba(252,176,176,.5),
+  -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+  inset -4px -4px 6px 0 rgba(252,176,176,.5),
+  inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  transform: rotateZ(-35deg);
+}
+
+a.fullscreen {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.active {
+  box-shadow: 4px 4px 6px 0 rgba(252,176,176,.5),
+  -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+  inset -4px -4px 6px 0 rgba(252,176,176,.5),
+  inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  color: var(--lightgrey);
+}
+
+.darker {
+  background: radial-gradient(circle, var(--lavender) 0%, var(--teal) 100%);
+}
+
+.lighter {
+  background: radial-gradient(circle, var(--coral) 0%, var(--dolphin) 100%);
+}
+
+.wiggle {
+  animation: rotateMe 0.8s ease-out infinite;
+  animation-direction: alternate;
+}
+
+@keyframes fadeOut {
+  
+  0% { opacity: 1.0;}
+  100% { opacity: 0;}
+
+}
+
+@keyframes fadeIn {
+  
+  0% { opacity: 0.3;}
+  100% { opacity: 1;}
+
+}
+
+@keyframes rotateMe {
+  
+  0% { transform: rotate(-20deg) scale(1);}
+  100% { transform: rotate(-25deg) scale(1.2);}
+
+}
+
+/* lazy mobile */
+@media(max-width: 800px) {
+  #btn-celebrate {
+    font-size: 2.5vh;
+    bottom: 5.5em;
+    margin: 0 auto;
+  }
+  
+  #thankyou {
+    display: none;
+  }
+  
+}
+
+@media (max-height: 500px) and (min-width: 1024px) {
+  a.fullscreen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #btn-celebrate {
+    font-size: 0.85em;
+    right: calc(20vw + 10vh);
+/*     background: #fabfbf; */
+  }
+  #thankyou {
+/*     opacity: 0; */
+  }
+}
+
+@media (max-height: 500px) and (max-width: 1024px) {
+  #btn-celebrate {
+    font-size: 0.85em;
+    right: 7vw;
+/*     background: #fabfbf; */
+  }
+  #thankyou {
+    opacity: 0;
+  }
+}
